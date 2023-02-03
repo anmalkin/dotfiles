@@ -7,22 +7,26 @@ set nocompatible " not vi compatible
 syntax on " turn on syntax highlighting
 
 "Color and airline tab settings
-packadd! onedark.vim
+packadd! everforest 
 
 if has ('termguicolors')
     set termguicolors
 endif
 
 set background=dark
-let g:onedark_hide_endofbuffer=1
-let g:onedark_terminal_italics=0
-colorscheme onedark 
+let g:everforest_better_performance=1
+colorscheme everforest 
 
-let g:airline_theme='onedark'
+let g:airline_theme='everforest'
 
 set showmatch " show matching braces when text indicator is over them
 set autoindent
 filetype plugin indent on " enable file type detection
+
+" Enable italics
+highlight Comment cterm=italic
+set t_ZH=[3m
+set t_ZR=[23m
 
 " --------------------
 " Basic editing config
@@ -75,3 +79,8 @@ set ttyfast
 " open new split panes to right and bottom
 set splitbelow
 set splitright
+
+" -----------
+" Keymappings
+" -----------
+nnoremap <C-n> :NERDTreeToggle<CR>
