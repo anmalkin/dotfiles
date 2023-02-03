@@ -7,19 +7,18 @@ set nocompatible " not vi compatible
 syntax on " turn on syntax highlighting
 
 "Color and airline tab settings
-packadd! everforest
+packadd! onedark.vim
 
 if has ('termguicolors')
     set termguicolors
 endif
 
 set background=dark
-let g:everforest_background='soft'
-let g:everforest_better_performance=1
-let g:everforest_disable_italic_comment=1
-colorscheme everforest
+let g:onedark_hide_endofbuffer=1
+let g:onedark_terminal_italics=0
+colorscheme onedark 
 
-let g:airline_theme='everforest'
+let g:airline_theme='onedark'
 
 set showmatch " show matching braces when text indicator is over them
 set autoindent
