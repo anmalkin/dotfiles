@@ -1,0 +1,12 @@
+[user]
+	name = amalkin
+	email = 102127060+anmalkin@users.noreply.github.com
+[init]
+	defaultBranch = main
+[core]
+	edtior = code --wait
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager-core
+[credential "https://dev.azure.com"]
+	useHttpPath = true
