@@ -38,14 +38,13 @@ set linebreak
 set showbreak=+++
 set textwidth=100
 set scrolloff=8
+set wildmenu
 
 " Search options
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-
-set laststatus=2
 
 "Tab options
 set shiftwidth=4
@@ -83,4 +82,9 @@ set splitright
 " -----------
 " Keymappings
 " -----------
+"  Toggle NerdTree directory
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Move line up and down
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
