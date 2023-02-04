@@ -19,8 +19,6 @@ colorscheme everforest
 
 let g:airline_theme='everforest'
 
-set showmatch " show matching braces when text indicator is over them
-set autoindent
 filetype plugin indent on " enable file type detection
 
 " Enable italics
@@ -39,6 +37,7 @@ set showbreak=+++
 set textwidth=100
 set scrolloff=8
 set wildmenu
+set showmatch " show matching braces when text indicator is over them
 
 " Search options
 set hlsearch
@@ -51,6 +50,7 @@ set shiftwidth=4
 set smartindent
 set smarttab
 set softtabstop=4
+set autoindent
 
 " Mode cursor settings
 let &t_SI.="\e[5 q" "SI = INSERT MODE
