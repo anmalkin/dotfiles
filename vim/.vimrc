@@ -1,6 +1,6 @@
 set nocompatible " not vi compatible
 
-"------------------
+" -----------------
 " Syntax and indent
 " -----------------
 
@@ -79,12 +79,28 @@ set ttyfast
 set splitbelow
 set splitright
 
-" -----------
-" Keymappings
-" -----------
+" ------------
+" Key mappings
+" ------------
+
 "  Toggle NerdTree directory
 nnoremap <C-n> :NERDTreeToggle<CR>
 
-" Move line up and down
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
+" Move lines up and down
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
+" Keep cursor in place
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+
+" Set spacebar as leader key
+let mapleader = " "
+
+"Remove highlighting after search
+nnoremap <Leader><space> :noh<cr>
