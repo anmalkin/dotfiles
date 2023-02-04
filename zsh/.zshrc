@@ -20,6 +20,15 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# Git utilities
+
+# Add, commit, push
+function acp() {
+  git add .
+  git commit -m "$1"
+  git push
+}
+
 # Aliases
 alias cfz="vim ~/.zshrc"
 alias cfv="vim ~/.vimrc"

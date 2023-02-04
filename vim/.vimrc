@@ -83,6 +83,9 @@ set splitright
 " Key mappings
 " ------------
 
+" 'Worst place in the universe' - ThePrimeagen
+nnoremap Q <nop>
+
 "  Toggle NerdTree directory
 nnoremap <C-n> :NERDTreeToggle<CR>
 
