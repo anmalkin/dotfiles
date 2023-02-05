@@ -1,7 +1,7 @@
 set nocompatible " not vi compatible
 
 " -----------------
-" Syntax and indent
+" Syntax and theme
 " -----------------
 
 syntax on " turn on syntax highlighting
@@ -36,7 +36,6 @@ set linebreak
 set showbreak=+++
 set textwidth=100
 set scrolloff=8
-set wildmenu
 set showmatch " show matching braces when text indicator is over them
 
 " Search options
@@ -71,11 +70,16 @@ set ttyfast
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-" -----------
-" Misc config
-" -----------
+" Fuzzy file finding
+set wildmenu   " Display all matching files when tab completing
+set path+=**   " Provides tab completion for all file-related tasks
 
-" open new split panes to right and bottom
+" How to use it:
+"   - Hit tab to :find by partial match
+"   - Use * to make it fuzzy
+"   - Note: :b lets you autocomplete any open buffer
+
+" Open new split panes to right and bottom
 set splitbelow
 set splitright
 
@@ -101,9 +105,9 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-
 " Set spacebar as leader key
 let mapleader = " "
 
 "Remove highlighting after search
 nnoremap <Leader><space> :noh<cr>
+
