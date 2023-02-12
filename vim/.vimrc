@@ -1,13 +1,22 @@
 set nocompatible " not vi compatible
 
+" --------------------------
+" Plug-in manager (vim-plug)
+" --------------------------
+
+call plug#begin()
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'sainnhe/everforest'
+call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
+
 " -----------------
 " Syntax and theme
 " -----------------
-
-syntax on " turn on syntax highlighting
-
-"Color and airline tab settings
-packadd! everforest 
 
 if has ('termguicolors')
     set termguicolors
