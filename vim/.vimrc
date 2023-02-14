@@ -3,6 +3,8 @@ set nocompatible " not vi compatible
 " --------------------------
 " Plug-in manager (vim-plug)
 " --------------------------
+" Run :PlugInstall to install newly added plugins
+" Run :PlugUpdate to install or update plugins
 
 call plug#begin()
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -12,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/everforest'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
 
 " -----------------
@@ -46,6 +49,8 @@ set showbreak=+++
 set textwidth=100
 set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
+set mouse+=a
+set backspace=indent,eol,start
 
 " Search options
 set hlsearch
@@ -96,6 +101,13 @@ set splitright
 " Key mappings
 " ------------
 
+" Set spacebar as leader key
+let mapleader=" "
+
+" Move to start and end of lines using home keys
+map H ^
+map L $
+
 " 'Worst place in the universe' - ThePrimeagen
 nnoremap Q <nop>
 
@@ -114,8 +126,6 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Set spacebar as leader key
-let mapleader = " "
 
 "Remove highlighting after search
 nnoremap <Leader><space> :noh<cr>
