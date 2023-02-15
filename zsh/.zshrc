@@ -35,5 +35,9 @@ alias cfv="vim ~/.vimrc"
 alias ls="exa --icons"
 alias rm="rm -i"
 
+# FZF plugin
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Load syntax highlighting plug-in (should be last)
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

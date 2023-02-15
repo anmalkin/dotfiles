@@ -16,6 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sainnhe/everforest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
 
 " -----------------
