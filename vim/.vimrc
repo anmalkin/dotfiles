@@ -53,7 +53,7 @@ set showbreak=+++
 set textwidth=100
 set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
-set mouse+=a
+set mouse=a
 
 " Search options
 set hlsearch
@@ -67,6 +67,7 @@ set smartindent
 set smarttab
 set softtabstop=4
 set autoindent
+set expandtab
 
 " Mode cursor settings
 let &t_SI.="\e[5 q" "SI = INSERT MODE
