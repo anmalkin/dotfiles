@@ -6,6 +6,7 @@ set nocompatible " not vi compatible
 " Run :PlugInstall to install newly added plugins
 " Run :PlugUpdate to install or update plugins
 
+
 call plug#begin()
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
@@ -17,6 +18,7 @@ Plug 'sainnhe/everforest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'romainl/vim-cool'
 call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
 
 " -----------------
@@ -52,7 +54,6 @@ set textwidth=100
 set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
 set mouse+=a
-set backspace=indent,eol,start
 
 " Search options
 set hlsearch
@@ -99,6 +100,9 @@ set path+=**   " Provides tab completion for all file-related tasks
 set splitbelow
 set splitright
 
+" Set terminal window size
+set termwinsize=10*0
+
 " ------------
 " Key mappings
 " ------------
@@ -117,10 +121,10 @@ nnoremap Q <nop>
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Move lines up and down
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
+nnoremap <down> :m .+1<CR>==
+nnoremap <up> :m .-2<CR>==
+vnoremap <down> :m '>+1<CR>gv=gv
+vnoremap <up> :m '<-2<CR>gv=gv
 
 " Keep cursor in place
 nnoremap <C-d> <C-d>zz
@@ -128,9 +132,8 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-
-"Remove highlighting after search
-nnoremap <Leader><space> :noh<cr>
+" Open fzf
+nnoremap <C-p> :FZF<cr>
 
 " -----------------
 " COC Configuration
@@ -172,17 +175,17 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion
+
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Use `[g` and `]g` to navigate diagnostics
+" Use `F2` and `Shift-F2` to navigate diagnostics (confirming to IntelliJ IDEA)
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <S-F2> <Plug>(coc-diagnostic-prev)
+nmap <silent> <F2> <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
