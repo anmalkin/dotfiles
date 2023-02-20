@@ -3,9 +3,10 @@ set nocompatible " not vi compatible
 " --------------------------
 " Plug-in manager (vim-plug)
 " --------------------------
+
 " Run :PlugInstall to install newly added plugins
 " Run :PlugUpdate to install or update plugins
-
+" Run :PlugClean to uninstall deleted plugins
 
 call plug#begin()
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -20,13 +21,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'romainl/vim-cool'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'sainnhe/everforest'
 call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
 
 " -----------------
 " Syntax and theme
 " -----------------
+
 set termguicolors
 
 set background=dark
@@ -38,6 +39,20 @@ colorscheme everforest
 let g:airline_theme = 'everforest'
 
 filetype plugin indent on " enable file type detection
+
+" Powerline symbols in airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.dirty='⚡'
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
 " --------------------
 " Basic editing config
@@ -100,9 +115,6 @@ set splitright
 
 " Set terminal window size
 set termwinsize=10*0
-
-" Automatically display all buffers when only one tab is open
-let g:airline#extensions#tabline#enabled = 1
 
 " ------------
 " Key mappings
@@ -193,7 +205,7 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Use `F2` and `Shift-F2` to navigate diagnostics (confirming to IntelliJ IDEA)
+" Use `F2` and `Shift-F2` to navigate diagnostics (conforming to IntelliJ IDEA)
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 nmap <silent> <S-F2> <Plug>(coc-diagnostic-prev)
 nmap <silent> <F2> <Plug>(coc-diagnostic-next)
