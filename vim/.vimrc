@@ -18,6 +18,7 @@ Plug 'sainnhe/everforest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'romainl/vim-cool'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'sainnhe/everforest'
@@ -26,29 +27,17 @@ call plug#end()  "Automatically executes filetype plugin indent on and syntax en
 " -----------------
 " Syntax and theme
 " -----------------
-
-" vim hardcodes background color erase even if the terminfo file does
-" not contain bce. This causes incorrect background rendering when
-" using a color theme with a background color in terminals such as
-" kitty that do not support background color erase.
-let &t_ut=''
+set termguicolors
 
 set background=dark
 let g:everforest_background = 'hard'
 let g:everforest_better_performance = 1
 
-
-set termguicolors
 colorscheme everforest 
 
 let g:airline_theme = 'everforest'
 
 filetype plugin indent on " enable file type detection
-
-" " Enable italics
-highlight Comment cterm=italic
-set t_ZH=[3m
-set t_ZR=[23m
 
 " --------------------
 " Basic editing config
@@ -119,6 +108,8 @@ let g:airline#extensions#tabline#enabled = 1
 " Key mappings
 " ------------
 
+let g:gitgutter_map_keys = 0
+
 " Set spacebar as leader key
 let mapleader=" "
 
@@ -126,13 +117,13 @@ let mapleader=" "
 map H ^
 map L $
 
-" 'Worst place in the universe' - ThePrimeagen
+" 'Worst place in the universe' - Primeagen
 nnoremap Q <nop>
 
 "  Toggle NerdTree directory
 nnoremap <C-n> :NERDTreeToggle<CR>
 
-" Move lines up and down
+" Move lines up and down using arrow keys
 nnoremap <down> :m .+1<CR>==
 nnoremap <up> :m .-2<CR>==
 vnoremap <down> :m '>+1<CR>gv=gv
@@ -141,11 +132,19 @@ vnoremap <up> :m '<-2<CR>gv=gv
 " Keep cursor in place
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
-nnoremap n nzzzv
-nnoremap N Nzzzv
 
 " Open fzf
 nnoremap <C-p> :FZF<cr>
+
+" Easy insertion of trailing ; from insert mode
+imap ;; <Esc>A;<Esc>
+
+" Show all open buffers in fzf
+nnoremap <leader>b :Buffers<cr>
+
+" Go to next buffer
+nnoremap <leader>l :bnext<cr>
+nnoremap <leader>h :bprevious<cr>
 
 " -----------------
 " COC Configuration
