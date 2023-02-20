@@ -19,25 +19,33 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'romainl/vim-cool'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'sainnhe/everforest'
 call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
 
 " -----------------
 " Syntax and theme
 " -----------------
 
-if has ('termguicolors')
-    set termguicolors
-endif
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce. This causes incorrect background rendering when
+" using a color theme with a background color in terminals such as
+" kitty that do not support background color erase.
+let &t_ut=''
 
 set background=dark
-let g:everforest_better_performance=1
+let g:everforest_background = 'hard'
+let g:everforest_better_performance = 1
+
+
+set termguicolors
 colorscheme everforest 
 
-let g:airline_theme='everforest'
+let g:airline_theme = 'everforest'
 
 filetype plugin indent on " enable file type detection
 
-" Enable italics
+" " Enable italics
 highlight Comment cterm=italic
 set t_ZH=[3m
 set t_ZR=[23m
@@ -53,7 +61,7 @@ set showbreak=+++
 set textwidth=100
 set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
-set mouse=a
+set showtabline=2
 
 " Search options
 set hlsearch
@@ -103,6 +111,9 @@ set splitright
 
 " Set terminal window size
 set termwinsize=10*0
+
+" Automatically display all buffers when only one tab is open
+let g:airline#extensions#tabline#enabled = 1
 
 " ------------
 " Key mappings
@@ -300,4 +311,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+let g:coc_node_path = '/usr/local/bin/node'
 
