@@ -1,5 +1,3 @@
-set nocompatible " not vi compatible
-
 " --------------------------
 " Plug-in manager (vim-plug)
 " --------------------------
@@ -53,6 +51,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline#extensions#tabline#enabled = 1
 
 " --------------------
 " Basic editing config
@@ -66,6 +65,7 @@ set textwidth=100
 set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
 set showtabline=2
+set mouse=a
 
 " Search options
 set hlsearch
@@ -75,10 +75,10 @@ set incsearch
 
 "Tab options
 set shiftwidth=4
+set autoindent
 set smartindent
 set smarttab
 set softtabstop=4
-set autoindent
 set expandtab
 
 " Mode cursor settings
@@ -86,13 +86,7 @@ let &t_SI.="\e[5 q" "SI = INSERT MODE
 let &t_SR.="\e[4 q" "SR = REPLACE MODE
 let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 
-" Makes mode changes faster
-set ttimeout
-set ttimeoutlen=1
-set ttyfast
-
 "Cursor settings:
-
 "  1 -> blinking block
 "  2 -> solid block
 "  3 -> blinking underscore
@@ -100,14 +94,11 @@ set ttyfast
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-" Fuzzy file finding
-set wildmenu   " Display all matching files when tab completing
-set path+=**   " Provides tab completion for all file-related tasks
+" Makes mode changes faster
+set ttimeout
+set ttimeoutlen=1
 
-" How to use it:
-"   - Hit tab to :find by partial match
-"   - Use * to make it fuzzy
-"   - Note: :b lets you autocomplete any open buffer
+set wildmenu   " Display all matching files when tab completing
 
 " Open new split panes to right and bottom
 set splitbelow
@@ -165,6 +156,7 @@ nnoremap <leader>h :bprevious<cr>
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
+
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
@@ -198,17 +190,16 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-
+" Use <c-space> to trigger completion
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Use `F2` and `Shift-F2` to navigate diagnostics (conforming to IntelliJ IDEA)
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-nmap <silent> <S-F2> <Plug>(coc-diagnostic-prev)
-nmap <silent> <F2> <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -304,24 +295,6 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings for CoCList
-" Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 let g:coc_node_path = '/usr/local/bin/node'
 
