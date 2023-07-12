@@ -13,7 +13,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sainnhe/everforest'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -66,6 +65,7 @@ set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
 set showtabline=2
 set mouse=a
+set hidden
 
 " Search options
 set hlsearch
@@ -116,10 +116,6 @@ let g:gitgutter_map_keys = 0
 " Set spacebar as leader key
 let mapleader=" "
 
-" Move to start and end of lines using home keys
-map H ^
-map L $
-
 " 'Worst place in the universe' - Primeagen
 nnoremap Q <nop>
 
@@ -146,8 +142,17 @@ imap ;; <Esc>A;<Esc>
 nnoremap <leader>b :Buffers<cr>
 
 " Go to next buffer
-nnoremap <leader>l :bnext<cr>
-nnoremap <leader>h :bprevious<cr>
+nnoremap L :bnext<cr>
+nnoremap H :bprevious<cr>
+
+" Delete buffer without closing window
+map <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
+
+" Move between windows
+nnoremap <leader>l <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>k <C-w>k
+nnoremap <leader>j <C-w>j
 
 " -----------------
 " COC Configuration
