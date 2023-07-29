@@ -60,7 +60,7 @@ set number
 set relativenumber
 set linebreak
 set showbreak=+++
-set textwidth=100
+set textwidth=80
 set scrolloff=8
 set showmatch " show matching braces when text indicator is over them
 set showtabline=2
@@ -74,11 +74,11 @@ set smartcase
 set incsearch
 
 "Tab options
-set shiftwidth=4
+set shiftwidth=2
 set autoindent
 set smartindent
 set smarttab
-set softtabstop=4
+set softtabstop=2
 set expandtab
 
 " Mode cursor settings
