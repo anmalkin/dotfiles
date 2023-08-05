@@ -154,6 +154,10 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>k <C-w>k
 nnoremap <leader>j <C-w>j
 
+" Right-align comments to 80 column width. Place cursor at first character of
+" comment string.
+nnoremap <leader><tab> mc80A <esc>080lDgelD`cP`
+
 " -----------------
 " COC Configuration
 " -----------------
