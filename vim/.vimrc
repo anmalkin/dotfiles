@@ -149,8 +149,8 @@ imap ;; <Esc>A;<Esc>
 nnoremap <leader>b :Buffers<cr>
 
 " Go to next buffer
-nnoremap L :bnext<cr>
-nnoremap H :bprevious<cr>
+nnoremap <leader><leader>l :bnext<cr>
+nnoremap <leader><leader>h :bprevious<cr>
 
 " Delete buffer without closing window
 map <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
