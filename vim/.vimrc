@@ -111,10 +111,17 @@ set termwinsize=10*0
 " Key mappings
 " ------------
 
-let g:gitgutter_map_keys = 0
-
 " Set spacebar as leader key
 let mapleader=" "
+
+" Git Gutter
+nmap ) <Plug>(GitGutterNextHunk)
+nmap ( <Plug>(GitGutterPrevHunk)
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+let g:gitgutter_map_keys = 0
+
 
 " 'Worst place in the universe' - Primeagen
 nnoremap Q <nop>
