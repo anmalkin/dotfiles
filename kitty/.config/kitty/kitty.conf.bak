@@ -68,6 +68,6 @@ macos_traditional_fullscreen yes
 #: but less pretty.
 
 # BEGIN_KITTY_THEME
-# Everforest Dark Medium
+# Catppuccin-Frappe
 include current-theme.conf
 # END_KITTY_THEME

@@ -26,10 +26,12 @@ function acp() {
 }
 
 # Aliases
-alias cfz="vim ~/.zshrc"
-alias cfv="vim ~/.vimrc"
+alias cfz="nvim ~/.zshrc"
+alias cfv="nvim ~/.vimrc"
+alias cfnv="nvim ~/.config/nvim/init.lua"
 alias ls="exa --icons"
 alias rm="rm -I"
+alias vi="nvim"
 
 # FZF plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
