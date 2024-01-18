@@ -8,22 +8,12 @@ PROMPT='%F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 # Add to path
 PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
 
-
 # Basic auto/tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
-
-# Git utilities
-
-# Add, commit, push
-function acp() {
-  git add .
-  git commit -m "$1"
-  git push
-}
 
 # Aliases
 alias cfz="nvim ~/.zshrc"
@@ -32,6 +22,7 @@ alias cfnv="nvim ~/.config/nvim/init.lua"
 alias ls="exa --icons"
 alias rm="rm -I"
 alias vi="nvim"
+alias gdb="lldb"
 
 # FZF plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
