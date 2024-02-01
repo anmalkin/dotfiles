@@ -6,7 +6,7 @@ setopt PROMPT_SUBST
 PROMPT='%F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 
 # Add to path
-PATH=$PATH:$HOME/go/bin
+PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin
 
 # Basic auto/tab complete
 autoload -U compinit
@@ -30,5 +30,3 @@ alias gdb="lldb"
 # Load syntax highlighting plug-in (should be last)
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-[ -f "/Users/amalkin/.ghcup/env" ] && source "/Users/amalkin/.ghcup/env" # ghcup-env
