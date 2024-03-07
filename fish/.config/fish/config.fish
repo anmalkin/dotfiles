@@ -1,0 +1,22 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+set fish_greeting
+
+### ALIASES ###
+alias vi='nvim'
+alias cfnv='nvim ~/.config/nvim/init.lua'
+alias cff='nvim ~/.config/fish/config.fish'
+alias ls='eza --icons=always -a --color=always --group-directories-first'
+
+### FUNCTIONS ###
+
+# Show $PATH in clean list
+function showpath
+  for val in $PATH
+    echo "entry: $val"
+  end
+end
+
+zoxide init fish | source

@@ -19,7 +19,6 @@ _comp_options+=(globdots)		# Include hidden files.
 alias cfz="nvim ~/.zshrc"
 alias cfv="nvim ~/.vimrc"
 alias cfnv="nvim ~/.config/nvim/init.lua"
-alias ls="exa --icons -a"
 alias rm="rm -I"
 alias vi="nvim"
 alias gdb="lldb"
