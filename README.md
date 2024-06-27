@@ -34,12 +34,12 @@ cd ~/.dotfiles && brew bundle
 
 ```bash
 ## while in ~/.dotfiles...
-stow zsh
 stow fish
 stow git
+stow nvim
+stow kitty
 ## ...etc.
 ```
-
 
 5. Install [Rust](https://www.rust-lang.org/tools/install)
 
