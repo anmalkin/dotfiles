@@ -14,14 +14,7 @@ git clone https://github.com/anmalkin/dotfiles.git ~/.dotfiles
 ```
 
 
-3. Clone neovim dotfiles into .config directory
-
-```zsh
-git clone https://github.com/anmalkin/nvim-config.git ~/.config/nvim
-```
-
-
-4. Install Homebrew, followed by the software listed in the Brewfile.
+3. Install Homebrew, followed by the software listed in the Brewfile.
 
 ```zsh
 # These could also be in an install script.
@@ -37,7 +30,7 @@ cd ~/.dotfiles && brew bundle
 ```
 
 
-5. Create symlinks in the Home directory to the real files in the repo.
+4. Create symlinks in the Home directory to the real files in the repo.
 
 ```zsh
 while in ~/.dotfiles...
@@ -47,3 +40,11 @@ stow git
 ...etc.
 ```
 
+
+5. Install [Rust](https://www.rust-lang.org/tools/install)
+
+
+6. Install [Haskell](https://www.haskell.org/ghcup/install/)
+
+
+7. Install [Go](https://go.dev/doc/install)
