@@ -1,22 +1,22 @@
 ## Steps to bootstrap a new Mac
 
-1. Install Apple's Command Line Tools
+1. Install Xcode Command Line Tools
 
-```zsh
+```bash
 xcode-select --install
 ```
 
 
 2. Clone dotfiles repo into new hidden directory
 
-```zsh
+```bash
 git clone https://github.com/anmalkin/dotfiles.git ~/.dotfiles
 ```
 
 
 3. Install Homebrew, followed by the software listed in the Brewfile.
 
-```zsh
+```bash
 # These could also be in an install script.
 
 # Install Homebrew
@@ -32,12 +32,12 @@ cd ~/.dotfiles && brew bundle
 
 4. Create symlinks in the Home directory to the real files in the repo.
 
-```zsh
-while in ~/.dotfiles...
+```bash
+## while in ~/.dotfiles...
 stow zsh
 stow fish
 stow git
-...etc.
+## ...etc.
 ```
 
 
