@@ -23,12 +23,6 @@ alias rm="rm -I"
 alias vi="nvim"
 alias gdb="lldb"
 
-# FZF plugin
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
 [ -f "/Users/amalkin/.ghcup/env" ] && source "/Users/amalkin/.ghcup/env" # ghcup-env
 
-# Load syntax highlighting plug-in (should be last)
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh)"
