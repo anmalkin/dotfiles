@@ -24,5 +24,3 @@ alias vi="nvim"
 alias gdb="lldb"
 
 [ -f "/Users/amalkin/.ghcup/env" ] && source "/Users/amalkin/.ghcup/env" # ghcup-env
-
-eval "$(zoxide init zsh)"
