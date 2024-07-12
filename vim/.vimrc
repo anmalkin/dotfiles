@@ -14,8 +14,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'romainl/vim-cool'
 Plug 'sainnhe/everforest'
 call plug#end()  "Automatically executes filetype plugin indent on and syntax enable
