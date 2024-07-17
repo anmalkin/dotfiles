@@ -22,5 +22,7 @@ end
 function vs
   if test -e ./Session.vim
     nvim -S Session.vim
+    else
+        echo No session file found
   end
 end
