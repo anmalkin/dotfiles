@@ -24,5 +24,6 @@ function vs
     nvim -S Session.vim
     else
         echo No session file found
+        return 1
   end
 end
