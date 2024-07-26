@@ -7,12 +7,17 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- Keep cursor in place as you move up and down
-vim.keymap.set('n', '<D-d>', "<C-d>zz")
-vim.keymap.set('n', '<D-u>', "<C-u>zz")
 vim.keymap.set('n', '<C-d>', "<C-d>zz")
 vim.keymap.set('n', '<C-u>', "<C-u>zz")
 vim.keymap.set('n', 'n', "nzzzv")
 vim.keymap.set('n', 'N', "Nzzzv")
+
+-- Mac OS command keybindings
+vim.keymap.set('n', '<D-d>', "<C-d>zz")
+vim.keymap.set('n', '<D-u>', "<C-u>zz")
+vim.keymap.set('v', '<D-u>', "<C-u>")
+vim.keymap.set('v', '<D-d>', "<C-d>")
+vim.keymap.set('n', '<D-w>', '<C-w>')
 
 -- Worst place in the universe -Primeagen
 vim.keymap.set("n", "Q", "<nop>")
@@ -45,12 +50,3 @@ vim.keymap.set({ 'n', 'i' }, "<Right>", "<nop>")
 
 -- Exit terminal
 vim.keymap.set({ 't' }, "<Esc>", "<C-Bslash><C-n>")
-
--- Open a terminal at the bottom of the screen with a fixed height.
-vim.keymap.set("n", ",st", function()
-  vim.cmd.new()
-  vim.cmd.wincmd "J"
-  vim.api.nvim_win_set_height(0, 12)
-  vim.wo.winfixheight = true
-  vim.cmd.term()
-end)

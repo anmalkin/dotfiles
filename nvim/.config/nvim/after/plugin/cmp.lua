@@ -16,10 +16,14 @@ cmp.setup {
     mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<D-n>'] = cmp.mapping.select_next_item(),
+        ['<D-p>'] = cmp.mapping.select_prev_item(),
         ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<D-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<D-f>'] = cmp.mapping.scroll_docs(4),
         ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
