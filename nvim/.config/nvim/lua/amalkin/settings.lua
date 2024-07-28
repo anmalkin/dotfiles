@@ -1,48 +1,48 @@
 -- Set highlight on search
-vim.o.hlsearch = false
-vim.o.incsearch = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
 -- Make line numbers default
-vim.o.nu = true
-vim.o.relativenumber = true
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
 -- Indenting
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 -- Text wrap
-vim.o.wrap = false
+vim.opt.wrap = false
 -- show a column at 80 characters as a guide for long lines
 vim.opt.colorcolumn = '80'
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menuone,noselect'
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -70,13 +70,17 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.api.nvim_create_autocmd({ "VimEnter", "VimResume" }, {
     group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
     callback = function()
+        if os.getenv('TERM') == 'xterm-kitty' then
         io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+        end
     end,
 })
 
 vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
     group = vim.api.nvim_create_augroup("KittyUnsetVarVimLeave", { clear = true }),
     callback = function()
-        io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+        if os.getenv('TERM') == 'xterm-kitty' then
+            io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+        end
     end,
 })

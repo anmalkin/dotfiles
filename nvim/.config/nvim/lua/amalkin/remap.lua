@@ -22,12 +22,6 @@ vim.keymap.set("i", ",,", "<Esc>A,<Esc>", { desc = "Insert trailing ',' (comma)"
 -- make missing : less annoying
 vim.keymap.set('n', ';', ':')
 
--- Move between windows
-vim.keymap.set('n', '<leader>h', '<C-w>h')
-vim.keymap.set('n', '<leader>j', '<C-w>j')
-vim.keymap.set('n', '<leader>k', '<C-w>k')
-vim.keymap.set('n', '<leader>l', '<C-w>l')
-
 -- Move between buffers
 vim.keymap.set("n", "L", ":bnext<cr>", { desc = 'Move to next buffer' })
 vim.keymap.set("n", "H", ":bprevious<cr>", { desc = 'Move to prevous buffer' })
