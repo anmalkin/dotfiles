@@ -98,6 +98,9 @@ return {
     {
         "folke/lazydev.nvim",
         ft = "lua",
+        dependencies = {
+            { "Bilal2453/luvit-meta" },
+        },
         opts = {
             library = {
                 { path = "luvit-meta/library", words = { "vim%.uv" } },
@@ -105,13 +108,11 @@ return {
         },
     },
 
-    { "Bilal2453/luvit-meta", lazy = true },
-
     {
         'mrcjkb/haskell-tools.nvim',
         version = '^3', -- Recommended
         ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
-        init = function()
+        config = function()
             vim.g.haskell_tools = {
                 tools = {
                     repl = {

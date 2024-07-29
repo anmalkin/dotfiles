@@ -1,13 +1,27 @@
 return {
 
     {
+        "neanias/everforest-nvim",
+        lazy = false,
+        name = "everforest",
+        priority = 1000,
+        config = function()
+            require 'lualine'.setup {
+                options = {
+                    theme = 'everforest'
+                }
+            }
+            vim.cmd([[colorscheme everforest]])
+        end,
+    },
+
+    {
         -- Set lualine as statusline
         'nvim-lualine/lualine.nvim',
         -- See `:help lualine.txt`
         opts = {
             options = {
                 icons_enabled = false,
-                theme = 'everforest',
                 component_separators = '|',
                 section_separators = '',
             },
@@ -21,5 +35,7 @@ return {
             }
         },
     },
+
+    { 'rrethy/vim-illuminate' },
 
 }
