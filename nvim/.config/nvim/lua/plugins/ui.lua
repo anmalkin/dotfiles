@@ -6,13 +6,26 @@ return {
         name = "everforest",
         priority = 1000,
         config = function()
-            require 'lualine'.setup {
-                options = {
-                    theme = 'everforest'
-                }
-            }
             vim.cmd([[colorscheme everforest]])
         end,
+    },
+
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        lazy = true,
+        opts = {
+            styles = {
+                transparency = true
+            }
+        },
+        config = function ()
+            require('lualine').setup({
+                options = {
+                    theme = 'rose-pine',
+                },
+            })
+        end
     },
 
     {
@@ -21,6 +34,7 @@ return {
         -- See `:help lualine.txt`
         opts = {
             options = {
+                theme = 'everforest',
                 icons_enabled = false,
                 component_separators = '|',
                 section_separators = '',

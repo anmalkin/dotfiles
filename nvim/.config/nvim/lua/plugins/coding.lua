@@ -9,20 +9,10 @@ return {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
-            'folke/lazydev.nvim',
+            'lazydev',
 
             -- Snippet Engine & its associated nvim-cmp source
-            {
-                'L3MON4D3/LuaSnip',
-                dependencies = { 'saadparwaiz1/cmp_luasnip' },
-                opts = {},
-                keys = {
-                    { mode = { "i", "s" }, "<C-k>", function() require("luasnip").jump(1) end,  { silent = true } },
-                    { mode = { "i", "s" }, "<C-j>", function() require("luasnip").jump(-1) end, { silent = true } },
-                    { mode = { "i", "s" }, "<D-k>", function() require("luasnip").jump(1) end,  { silent = true } },
-                    { mode = { "i", "s" }, "<D-j>", function() require("luasnip").jump(-1) end, { silent = true } },
-                }
-            },
+            'luasnip',
             'mrcjkb/haskell-snippets.nvim',
             "rafamadriz/friendly-snippets",
         },
@@ -65,6 +55,19 @@ return {
                 },
             }
         end
+    },
+
+    {
+        'L3MON4D3/LuaSnip',
+        dependencies = { 'saadparwaiz1/cmp_luasnip' },
+        name = "luasnip",
+        opts = {},
+        keys = {
+            { mode = { "i", "s" }, "<C-k>", function() require("luasnip").jump(1) end,  { silent = true } },
+            { mode = { "i", "s" }, "<C-j>", function() require("luasnip").jump(-1) end, { silent = true } },
+            { mode = { "i", "s" }, "<D-k>", function() require("luasnip").jump(1) end,  { silent = true } },
+            { mode = { "i", "s" }, "<D-j>", function() require("luasnip").jump(-1) end, { silent = true } },
+        }
     },
 
     {
@@ -143,6 +146,7 @@ return {
 
     {
         "folke/todo-comments.nvim",
+        event = "InsertEnter",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
     },
