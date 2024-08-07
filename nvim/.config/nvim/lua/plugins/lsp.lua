@@ -54,9 +54,9 @@ return {
                             styleLints = {
                                 enable = true,
                             },
-                            experimental = {
-                                enable = true,
-                            }
+                        },
+                        rustc = {
+                            source = "discover",
                         },
                     },
                 },

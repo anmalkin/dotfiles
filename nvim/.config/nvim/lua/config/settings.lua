@@ -14,6 +14,7 @@ vim.opt.smartindent = true
 
 -- Text wrap
 vim.opt.wrap = false
+
 -- show a column at 80 characters as a guide for long lines
 vim.opt.colorcolumn = '80'
 
