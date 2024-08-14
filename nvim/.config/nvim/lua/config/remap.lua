@@ -21,7 +21,7 @@ vim.keymap.set("i", ";;", "<Esc>A;<Esc>", { desc = "Insert trailing ';' (semicol
 vim.keymap.set("i", ",,", "<Esc>A,<Esc>", { desc = "Insert trailing ',' (comma)"})
 
 -- make missing : less annoying
-vim.keymap.set('n', ';', ':')
+-- vim.keymap.set('n', ';', ':')
 
 -- Move between buffers
 vim.keymap.set("n", "L", ":bnext<cr>", { desc = 'Move to next buffer' })

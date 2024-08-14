@@ -59,12 +59,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("custom-term-open", {}),
-  callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-    vim.opt_local.scrolloff = 0
-  end,
+    group = vim.api.nvim_create_augroup("custom-term-open", {}),
+    callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.opt_local.scrolloff = 0
+    end,
 })
 
 -- Kitty configuration
@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimResume" }, {
     group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
     callback = function()
         if os.getenv('TERM') == 'xterm-kitty' then
-        io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+            io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
         end
     end,
 })

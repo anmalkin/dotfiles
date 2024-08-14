@@ -1,3 +1,8 @@
+vim.api.nvim_create_user_command("LualineTheme", function()
+    local theme = vim.fn.input("Theme: ")
+    require('lualine').setup({ options = { theme = theme } })
+end, {})
+
 return {
 
     {
@@ -5,27 +10,22 @@ return {
         lazy = false,
         name = "everforest",
         priority = 1000,
-        config = function()
+        config = function ()
             vim.cmd([[colorscheme everforest]])
-        end,
+        end
     },
 
     {
         "rose-pine/neovim",
         name = "rose-pine",
-        lazy = true,
+        lazy = false,
         opts = {
+            variant = "moon",
+            dark_variant = "moon",
             styles = {
                 transparency = true
             }
         },
-        config = function ()
-            require('lualine').setup({
-                options = {
-                    theme = 'rose-pine',
-                },
-            })
-        end
     },
 
     {
@@ -34,7 +34,7 @@ return {
         -- See `:help lualine.txt`
         opts = {
             options = {
-                theme = 'everforest',
+                theme = 'auto',
                 icons_enabled = false,
                 component_separators = '|',
                 section_separators = '',
@@ -53,3 +53,4 @@ return {
     { 'rrethy/vim-illuminate' },
 
 }
+
