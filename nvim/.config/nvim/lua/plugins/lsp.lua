@@ -72,6 +72,12 @@ return {
                 severity_sort = true,
             })
 
+            local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+            for type, icon in pairs(signs) do
+                local hl = "DiagnosticSign" .. type
+                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+            end
+
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
             vim.api.nvim_create_autocmd('LspAttach', {
