@@ -1,5 +1,4 @@
 return {
-
     {
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
@@ -181,11 +180,21 @@ return {
             local cond = require("nvim-autopairs.conds")
 
             npairs.add_rules({
-                rule("|", "|", { "rust" }):with_move(cond.after_regex("|")),
-                rule("<", ">"):with_pair(cond.before_regex("%a+")):with_move(function(opts)
+                rule("|", "|", { "rust" })
+                    :with_move(cond.after_regex("|")),
+                rule("<", ">")
+                    :with_pair(cond.before_regex("%a+"))
+                    :with_move(function(opts)
                     return opts.char == ">"
                 end),
             })
+
+            local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+            local cmp = require('cmp')
+            cmp.event:on(
+                'confirm_done',
+                cmp_autopairs.on_confirm_done()
+            )
         end,
     },
 

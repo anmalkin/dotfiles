@@ -17,8 +17,8 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "Q", "<nop>")
 
 -- Easy insertion of trailing ; and ,
-vim.keymap.set("i", ";;", "<Esc>A;<Esc>", { desc = "Insert trailing ';' (semicolon)"})
-vim.keymap.set("i", ",,", "<Esc>A,<Esc>", { desc = "Insert trailing ',' (comma)"})
+vim.keymap.set("i", ";;", "<Esc>A;<Esc>", { desc = "Insert trailing ';' (semicolon)" })
+vim.keymap.set("i", ",,", "<Esc>A,<Esc>", { desc = "Insert trailing ',' (comma)" })
 
 -- make missing : less annoying
 -- vim.keymap.set('n', ';', ':')
@@ -50,4 +50,3 @@ vim.keymap.set('n', '<D-s>', '<cmd>wa<CR>')
 vim.keymap.set('n', '<D-w><D-d>', vim.diagnostic.open_float)
 vim.keymap.set('n', '<D-w>d', vim.diagnostic.open_float)
 vim.keymap.set('n', "<D-q>", '<cmd>bp<bar>sp<bar>bn<bar>bd<CR>')
-
