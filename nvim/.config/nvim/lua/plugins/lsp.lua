@@ -72,7 +72,8 @@ return {
                     "package.json",
                     ".git",
                     "dune-project",
-                    "dune-workspace"
+                    "dune-workspace",
+                    "*.ml"
                 ),
             }
 
