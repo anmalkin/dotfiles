@@ -185,8 +185,8 @@ return {
                 rule("<", ">")
                     :with_pair(cond.before_regex("%a+"))
                     :with_move(function(opts)
-                    return opts.char == ">"
-                end),
+                        return opts.char == ">"
+                    end),
             })
         end,
     },
