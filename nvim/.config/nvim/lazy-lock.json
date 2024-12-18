@@ -1,5 +1,5 @@
 {
-  "blink.cmp": { "branch": "main", "commit": "ae5a4ce8f7e519e49de7ae6fcadd74547f820a52" },
+  "blink.cmp": { "branch": "main", "commit": "46eb5f3fd3dba0a3bb3d026fb2b7462f4a0656b7" },
   "everforest": { "branch": "main", "commit": "6a74c99880b4d4a2cafb6798287057860115d96d" },
   "fidget.nvim": { "branch": "main", "commit": "9238947645ce17d96f30842e61ba81147185b657" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },

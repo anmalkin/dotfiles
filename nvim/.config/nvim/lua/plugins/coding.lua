@@ -4,14 +4,22 @@ return {
         'saghen/blink.cmp',
         lazy = false, -- lazy loading handled internally
         dependencies = 'rafamadriz/friendly-snippets',
-        version = 'v0.*',
+        build = 'cargo build --release',
         opts = {
             -- 'default' for mappings similar to built-in completion
             -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
             -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
             -- see the "default configuration" section below for full documentation on how to define
             -- your own keymap.
-            keymap = { preset = 'default' },
+            keymap = {
+                preset = 'default',
+                ['<D-p>'] = { 'select_prev', 'fallback' },
+                ['<D-n>'] = { 'select_next', 'fallback' },
+                ['<CR>'] = { 'accept', 'fallback' },
+                ['<D-e>'] = { 'hide', 'fallback' },
+                ['<D-b>'] = { 'scroll_documentation_up', 'fallback' },
+                ['<D-f>'] = { 'scroll_documentation_down', 'fallback' },
+            },
             appearance = {
                 use_nvim_cmp_as_default = true,
                 nerd_font_variant = 'mono'
@@ -22,6 +30,13 @@ return {
                     -- dont show LuaLS require statements when lazydev has items
                     lsp = { fallbacks = { "lazydev" } },
                     lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+                },
+                cmdline = {},
+            },
+            completion = {
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 250,
                 },
             },
             -- experimental signature help support
