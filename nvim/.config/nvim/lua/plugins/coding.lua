@@ -1,72 +1,33 @@
 return {
-    {
-        'hrsh7th/nvim-cmp',
-        event = "InsertEnter",
-        dependencies = {
-            -- Adds LSP completion capabilities
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'lazydev',
 
-            -- Snippet Engine & its associated nvim-cmp source
-            'luasnip',
-            'mrcjkb/haskell-snippets.nvim',
-            "rafamadriz/friendly-snippets",
+    {
+        'saghen/blink.cmp',
+        lazy = false, -- lazy loading handled internally
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = 'v0.*',
+        opts = {
+            -- 'default' for mappings similar to built-in completion
+            -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+            -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+            -- see the "default configuration" section below for full documentation on how to define
+            -- your own keymap.
+            keymap = { preset = 'default' },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+                providers = {
+                    -- dont show LuaLS require statements when lazydev has items
+                    lsp = { fallbacks = { "lazydev" } },
+                    lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+                },
+            },
+            -- experimental signature help support
+            signature = { enabled = true }
         },
-        config = function()
-            local cmp = require 'cmp'
-            local luasnip = require 'luasnip'
-            require('luasnip.loaders.from_vscode').lazy_load()
-            luasnip.config.setup {}
-
-            cmp.setup {
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-                completion = {
-                    completeopt = 'menu,menuone,noselect',
-                },
-                mapping = cmp.mapping.preset.insert {
-                    ['<C-n>'] = cmp.mapping.select_next_item(),
-                    ['<C-p>'] = cmp.mapping.select_prev_item(),
-                    ['<D-n>'] = cmp.mapping.select_next_item(),
-                    ['<D-p>'] = cmp.mapping.select_prev_item(),
-                    ['<Tab>'] = cmp.mapping.select_next_item(),
-                    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<D-b>'] = cmp.mapping.scroll_docs(-4),
-                    ['<D-f>'] = cmp.mapping.scroll_docs(4),
-                    ['<CR>'] = cmp.mapping.confirm {
-                        behavior = cmp.ConfirmBehavior.Replace,
-                        select = false,
-                    },
-                },
-                sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = 'path' },
-                    { name = 'buffer' },
-                },
-            }
-        end
-    },
-
-    {
-        'L3MON4D3/LuaSnip',
-        dependencies = { 'saadparwaiz1/cmp_luasnip' },
-        name = "luasnip",
-        opts = {},
-        keys = {
-            { mode = { "i", "s" }, "<C-k>", function() require("luasnip").jump(1) end,  { silent = true } },
-            { mode = { "i", "s" }, "<C-j>", function() require("luasnip").jump(-1) end, { silent = true } },
-            { mode = { "i", "s" }, "<D-k>", function() require("luasnip").jump(1) end,  { silent = true } },
-            { mode = { "i", "s" }, "<D-j>", function() require("luasnip").jump(-1) end, { silent = true } },
-        }
+        opts_extend = { "sources.default" }
     },
 
     {
@@ -189,6 +150,25 @@ return {
                     end),
             })
         end,
+    },
+
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
     },
 
 }
