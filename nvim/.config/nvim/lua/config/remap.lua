@@ -21,7 +21,7 @@ vim.keymap.set("i", ";;", "<Esc>A;<Esc>", { desc = "Insert trailing ';' (semicol
 vim.keymap.set("i", ",,", "<Esc>A,<Esc>", { desc = "Insert trailing ',' (comma)" })
 
 -- Easy insertion of double ::
-vim.keymap.set('i', '<C-;>', '::', {desc = "Insert '::' (double colon)"})
+vim.keymap.set('i', '<C-;>', '::', { desc = "Insert '::' (double colon)" })
 
 -- make missing : less annoying
 -- vim.keymap.set('n', ';', ':')
@@ -52,7 +52,7 @@ vim.keymap.set('n', '<D-r>', '<C-r>')
 vim.keymap.set('n', '<D-w><D-d>', vim.diagnostic.open_float)
 vim.keymap.set('n', '<D-w>d', vim.diagnostic.open_float)
 vim.keymap.set('n', "<D-q>", '<cmd>bp<bar>sp<bar>bn<bar>bd<CR>')
-vim.keymap.set('i', '<D-.>', '->', {desc = "Insert '->' (right arrow)"})
-vim.keymap.set('i', '<D-,>', '<-', {desc = "Insert '<-' (left arrow)"})
-vim.keymap.set('i', '<D-=>', '=>', {desc = "Insert '=>' (arrow)"})
-vim.keymap.set('i', '<D-;>', '::', {desc = "Insert '::' (double colon)"})
+vim.keymap.set('i', '<D-.>', '->', { desc = "Insert '->' (right arrow)" })
+vim.keymap.set('i', '<D-,>', '<-', { desc = "Insert '<-' (left arrow)" })
+vim.keymap.set('i', '<D-=>', '=>', { desc = "Insert '=>' (arrow)" })
+vim.keymap.set('i', '<D-;>', '::', { desc = "Insert '::' (double colon)" })

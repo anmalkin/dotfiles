@@ -15,7 +15,7 @@ vim.opt.smartindent = true
 -- Text wrap
 vim.opt.wrap = false
 
--- show a column at 80 characters as a guide for long lines
+-- show column as a guide for long lines
 vim.opt.colorcolumn = '80'
 
 -- Enable mouse mode
@@ -48,40 +48,40 @@ vim.opt.completeopt = 'menuone,noselect'
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup(
-    'YankHighlight', { clear = true })
+  'YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
 })
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
-    group = vim.api.nvim_create_augroup("custom-term-open", {}),
-    callback = function()
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
-        vim.opt_local.scrolloff = 0
-    end,
+  group = vim.api.nvim_create_augroup("custom-term-open", {}),
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.scrolloff = 0
+  end,
 })
 
 -- Kitty configuration
 vim.api.nvim_create_autocmd({ "VimEnter", "VimResume" }, {
-    group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
-    callback = function()
-        if os.getenv('TERM') == 'xterm-kitty' then
-            io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
-        end
-    end,
+  group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
+  callback = function()
+    if os.getenv('TERM') == 'xterm-kitty' then
+      io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
-    group = vim.api.nvim_create_augroup("KittyUnsetVarVimLeave", { clear = true }),
-    callback = function()
-        if os.getenv('TERM') == 'xterm-kitty' then
-            io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
-        end
-    end,
+  group = vim.api.nvim_create_augroup("KittyUnsetVarVimLeave", { clear = true }),
+  callback = function()
+    if os.getenv('TERM') == 'xterm-kitty' then
+      io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+    end
+  end,
 })
