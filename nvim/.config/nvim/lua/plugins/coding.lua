@@ -2,7 +2,7 @@ return {
 
   {
     'saghen/blink.cmp',
-    lazy = false,     -- lazy loading handled internally
+    lazy = false, -- lazy loading handled internally
     dependencies = 'rafamadriz/friendly-snippets',
     build = 'cargo build --release',
     opts = {
@@ -74,7 +74,7 @@ return {
         textobjects = {
           select = {
             enable = true,
-            lookahead = true,             -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
             keymaps = {
               -- You can use the capture groups defined in textobjects.scm
               ['aa'] = '@parameter.outer',
@@ -87,7 +87,7 @@ return {
           },
           move = {
             enable = true,
-            set_jumps = true,             -- whether to set jumps in the jumplist
+            set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
               [']m'] = '@function.outer',
               [']]'] = '@class.outer',
@@ -128,7 +128,7 @@ return {
 
   {
     "kylechui/nvim-surround",
-    version = "*",     -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     opts = {},
   },
@@ -147,7 +147,7 @@ return {
     config = function()
       require('nvim-autopairs').setup({
         enable_check_bracket_line = false,
-        ignored_next_char = "[%w%.]",         -- will ignore alphanumeric and `.` symbol
+        ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
         enable_bracket_in_quote = false,
       })
 
@@ -174,15 +174,6 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-    },
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
-        desc = "Buffer Local Keymaps (which-key)",
-      },
     },
   },
 
