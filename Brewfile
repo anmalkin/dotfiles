@@ -2,6 +2,8 @@ tap "codecrafters-io/tap"
 tap "homebrew/bundle"
 tap "microsoft/git"
 tap "riscv/riscv"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2@1.7"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
@@ -26,18 +28,28 @@ brew "git"
 brew "git-gui"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Language Server for the Lua language
 brew "lua-language-server"
+# Netwide Assembler (NASM) is an 80x86 assembler
+brew "nasm"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
+# OCaml package manager
+brew "opam"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Simplified and community-driven man pages
+brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # CodeCrafters CLI
@@ -61,6 +73,7 @@ cask "qmk-toolbox"
 # PDF viewer designed for reading research papers and technical books
 cask "sioyek"
 vscode "christian-kohler.path-intellisense"
+vscode "maximedenes.vscoq"
 vscode "ms-vscode.cpptools"
 vscode "ms-vscode.cpptools-extension-pack"
 vscode "ms-vscode.cpptools-themes"
