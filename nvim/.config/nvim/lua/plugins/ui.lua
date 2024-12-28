@@ -16,19 +16,6 @@ return {
   },
 
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    lazy = false,
-    opts = {
-      variant = "moon",
-      dark_variant = "moon",
-      styles = {
-        transparency = true
-      }
-    },
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
