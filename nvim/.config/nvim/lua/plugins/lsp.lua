@@ -1,3 +1,6 @@
+-- Rust snippets
+local spawn = "thread::spawn(move || {\n\t$0\n})"
+
 return {
 
   {
@@ -16,7 +19,6 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lspconfig = require('lspconfig')
 
-      -- example to setup lua_ls and enable call snippets
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         settings = {
@@ -33,6 +35,10 @@ return {
       }
 
       lspconfig.clangd.setup {
+        capabilities = capabilities
+      }
+
+      lspconfig.pyright.setup {
         capabilities = capabilities
       }
 
@@ -54,6 +60,19 @@ return {
             rustc = {
               source = "discover",
             },
+            completion = {
+              snippets = {
+                custom = {
+                  ["thread spawn"] = {
+                    prefix = "spawn",
+                    body = spawn,
+                    description = "Insert a thread::spawn call",
+                    requires = "std::thread",
+                    scope = "expr",
+                  },
+                }
+              }
+            }
           },
         },
       }
