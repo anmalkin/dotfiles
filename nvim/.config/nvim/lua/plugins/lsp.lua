@@ -73,21 +73,6 @@ return {
         },
       }
 
-      lspconfig.ocamllsp.setup {
-        filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
-        capabilities = capabilities,
-        settings = { codelens = { enable = true } },
-        root_dir = lspconfig.util.root_pattern(
-          "*.opam",
-          "esy.json",
-          "package.json",
-          ".git",
-          "dune-project",
-          "dune-workspace",
-          "*.ml"
-        ),
-      }
-
       -- Configure how diagnostics are displayed
       -- See :help vim.diagnostic.config for more advanced customization options
       vim.diagnostic.config({
@@ -150,20 +135,5 @@ return {
         { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
     },
-  },
-
-  {
-    'mrcjkb/haskell-tools.nvim',
-    version = '^3', -- Recommended
-    ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
-    config = function()
-      vim.g.haskell_tools = {
-        tools = {
-          repl = {
-            prefer = 'cabal'
-          }
-        }
-      }
-    end
   },
 }

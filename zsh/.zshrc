@@ -5,9 +5,6 @@ zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
 PROMPT='%F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 
-# Add to path
-PATH=$PATH:$HOME/go/bin
-
 # Basic auto/tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select

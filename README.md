@@ -42,9 +42,3 @@ stow kitty
 ```
 
 5. Install [Rust](https://www.rust-lang.org/tools/install)
-
-
-6. Install [Haskell](https://www.haskell.org/ghcup/install/)
-
-
-7. Install [Go](https://go.dev/doc/install)
