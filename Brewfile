@@ -1,17 +1,22 @@
 tap "codecrafters-io/tap"
 tap "homebrew/bundle"
+tap "homebrew/services"
 tap "microsoft/git"
 tap "riscv/riscv"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima", args: ["HEAD"]
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # Generate documentation for several programming languages
 brew "doxygen"
 # Functional metaprogramming aware language built on Erlang VM
@@ -32,6 +37,8 @@ brew "httpie"
 brew "icu4c@76"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2@1.7"
 # Language Server for the Lua language
 brew "lua-language-server"
 # Netwide Assembler (NASM) is an 80x86 assembler
@@ -40,8 +47,6 @@ brew "nasm"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
-# OCaml package manager
-brew "opam"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Search tool like grep and The Silver Searcher
