@@ -19,5 +19,3 @@ alias cfnv="nvim ~/.config/nvim/init.lua"
 alias rm="rm -I"
 alias vi="nvim"
 alias gdb="lldb"
-
-[ -f "/Users/amalkin/.ghcup/env" ] && source "/Users/amalkin/.ghcup/env" # ghcup-env
