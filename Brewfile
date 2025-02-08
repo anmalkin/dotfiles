@@ -1,4 +1,5 @@
 tap "codecrafters-io/tap"
+tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "microsoft/git"
@@ -11,14 +12,8 @@ brew "clang-format"
 brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima", args: ["HEAD"]
-# GNU File, Shell, and Text utilities
-brew "coreutils"
-# Secure runtime for JavaScript and TypeScript
-brew "deno"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
-# Generate documentation for several programming languages
-brew "doxygen"
 # Functional metaprogramming aware language built on Erlang VM
 brew "elixir"
 # Modern, maintained replacement for ls
@@ -27,22 +22,22 @@ brew "eza"
 brew "fd"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Distributed revision control system
 brew "git"
 # Tcl/Tk UI for the git revision control system
 brew "git-gui"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2@1.7"
+# JIT library for the GNU compiler collection
+brew "libgccjit"
 # Language Server for the Lua language
 brew "lua-language-server"
-# Netwide Assembler (NASM) is an 80x86 assembler
-brew "nasm"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Platform built on V8 to build network applications
@@ -51,14 +46,20 @@ brew "node"
 brew "pkgconf"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Simplified and community-driven man pages
 brew "tldr"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Plain text note-taking assistant
+brew "zk", args: ["HEAD"]
 # CodeCrafters CLI
 brew "codecrafters-io/tap/codecrafters"
+# GNU Emacs text editor
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-mailutils", "with-native-comp", "with-savchenkovaleriy-big-sur-icon"]
 # Enable Windows-like alt-tab
 cask "alt-tab"
 cask "font-hack-nerd-font"
