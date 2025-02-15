@@ -36,7 +36,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -84,3 +84,30 @@
 (setq-default vterm-shell
               "/opt/homebrew/bin/fish") (setq-default explicit-shell-file-name
               "/opt/homebrew/bin/fish")
+
+;; Corfu re-mappings to more familiar territory
+(after! corfu
+  (map! :map corfu-map
+        :nvi "TAB" nil
+        :nvi "<tab>" nil
+        :i "C-k" #'corfu-popupinfo-scroll-down
+        :i "C-j" #'corfu-popupinfo-scroll-up))
+
+;; Rust-specific niceties
+(defun append-semicolon ()
+  (interactive)
+  (end-of-line)
+  (insert ";"))
+
+(defun append-comma ()
+  (interactive)
+  (end-of-line)
+  (insert ","))
+
+(after! rustic
+  (map! :map rustic-mode-map
+        :desc "Insert trailing semicolon"
+        :i "C-c ;" #'append-semicolon)
+  (map! :map rustic-mode-map
+        :desc "Insert trailing comma"
+        :i "C-c ," #'append-comma))
