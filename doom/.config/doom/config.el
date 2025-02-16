@@ -94,12 +94,14 @@
         :i "C-j" #'corfu-popupinfo-scroll-up))
 
 ;; Rust-specific niceties
-(defun append-semicolon ()
+(defun insert-trailing-semicolon ()
+  "Insert semicolon at end of line"
   (interactive)
   (end-of-line)
   (insert ";"))
 
-(defun append-comma ()
+(defun insert-trailing-comma ()
+  "Insert comma at end of line"
   (interactive)
   (end-of-line)
   (insert ","))
@@ -111,3 +113,22 @@
   (map! :map rustic-mode-map
         :desc "Insert trailing comma"
         :i "C-c ," #'append-comma))
+
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'control))
+
+;; Keep window centered when scrolling
+(defun scroll-down-centered ()
+  "Keep window centered when scrolling down"
+  (interactive)
+  (evil-scroll-down 0)
+  (evil-scroll-line-to-center (line-number-at-pos)))
+
+(defun scroll-up-centered ()
+  "Keep window centered when scrolling up"
+  (interactive)
+  (evil-scroll-up 0)
+  (evil-scroll-line-to-center (line-number-at-pos)))
+
+(map! :nv "C-d" #'scroll-down-centered)
+(map! :nv "C-u" #'scroll-up-centered)
