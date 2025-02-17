@@ -1,13 +1,76 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+;; NOTE: No need to run 'doom sync' after modifying this file!
 
+;;;; EDITOR
 
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(setq doom-theme 'doom-gruvbox)
+(setq display-line-numbers-type 'visual)
+(set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+;; TODO: Set font
+
+(after! corfu
+  (map! :map corfu-map
+        :nvi "TAB" nil
+        :nvi "<tab>" nil
+        :i "C-k" #'corfu-popupinfo-scroll-down
+        :i "C-j" #'corfu-popupinfo-scroll-up))
+
+(after! rustic
+  (map! :map rustic-mode-map
+        :desc "Insert double colon"
+        :i "C-;" #'(lambda () (interactive) (insert "::")))
+  (map! :map rustic-mode-map
+        :desc "Insert =>"
+        :i "C-=" #'(lambda () (interactive) (insert "=>")))
+  (map! :map rustic-mode-map
+        :desc "Insert right arrow"
+        :i "C--" #'(lambda () (interactive) (insert "->")))
+  (map! :map rustic-mode-map
+        :desc "Insert trailing comma"
+        :i "C-c ," #'(lambda () (interactive) (end-of-line) (insert ",")))
+  (map! :map rustic-mode-map
+        :desc "Insert trailing semicolon"
+        :i "C-c ;" #'(lambda () (interactive) (end-of-line) (insert ";")))
+  )
+
+(defun scroll-down-centered ()
+  "Keep window centered when scrolling down"
+  (interactive)
+  (evil-scroll-down 0)
+  (evil-scroll-line-to-center (line-number-at-pos)))
+
+(defun scroll-up-centered ()
+  "Keep window centered when scrolling up"
+  (interactive)
+  (evil-scroll-up 0)
+  (evil-scroll-line-to-center (line-number-at-pos)))
+
+(map! :nv "C-d" #'scroll-down-centered)
+(map! :nv "C-u" #'scroll-up-centered)
+
+;;;; ORG MODE
+
+(setq org-directory "~/org/")
+(setq org-tags-column -77)
+
+;;;; TERMINAL
+
+;; Configure fish shell for emulation and bash for execution
+(setq shell-file-name (executable-find
+                       "bash"))
+
+(setq-default vterm-shell
+              "/opt/homebrew/bin/fish") (setq-default explicit-shell-file-name
+              "/opt/homebrew/bin/fish")
+
+;;;; OS
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'control))
+
+;;;; HELPFUL DOOM STUFF
+
+;; TODO: Eventually delete this
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -29,18 +92,6 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'visual)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -73,62 +124,3 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-;; Set background opacity
-(set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
-
-;; Configure fish shell for emulation and bash for execution
-(setq shell-file-name (executable-find
-                       "bash"))
-
-(setq-default vterm-shell
-              "/opt/homebrew/bin/fish") (setq-default explicit-shell-file-name
-              "/opt/homebrew/bin/fish")
-
-;; Corfu re-mappings to more familiar territory
-(after! corfu
-  (map! :map corfu-map
-        :nvi "TAB" nil
-        :nvi "<tab>" nil
-        :i "C-k" #'corfu-popupinfo-scroll-down
-        :i "C-j" #'corfu-popupinfo-scroll-up))
-
-;; Rust-specific niceties
-(defun insert-trailing-semicolon ()
-  "Insert semicolon at end of line"
-  (interactive)
-  (end-of-line)
-  (insert ";"))
-
-(defun insert-trailing-comma ()
-  "Insert comma at end of line"
-  (interactive)
-  (end-of-line)
-  (insert ","))
-
-(after! rustic
-  (map! :map rustic-mode-map
-        :desc "Insert trailing semicolon"
-        :i "C-c ;" #'append-semicolon)
-  (map! :map rustic-mode-map
-        :desc "Insert trailing comma"
-        :i "C-c ," #'append-comma))
-
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'control))
-
-;; Keep window centered when scrolling
-(defun scroll-down-centered ()
-  "Keep window centered when scrolling down"
-  (interactive)
-  (evil-scroll-down 0)
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(defun scroll-up-centered ()
-  "Keep window centered when scrolling up"
-  (interactive)
-  (evil-scroll-up 0)
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(map! :nv "C-d" #'scroll-down-centered)
-(map! :nv "C-u" #'scroll-up-centered)
