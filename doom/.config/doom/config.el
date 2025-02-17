@@ -4,8 +4,8 @@
 
 ;;;; EDITOR
 
-(setq doom-theme 'doom-gruvbox)
-(setq display-line-numbers-type 'visual)
+(setopt doom-theme 'doom-gruvbox)
+(setopt display-line-numbers-type 'visual)
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 ;; TODO: Set font
 
@@ -51,22 +51,23 @@
 
 ;;;; ORG MODE
 
-(setq org-directory "~/org/")
-(setq org-tags-column -77)
+(setopt org-tags-column -77)
 
 ;;;; TERMINAL
 
 ;; Configure fish shell for emulation and bash for execution
-(setq shell-file-name (executable-find
-                       "bash"))
+(setopt shell-file-name (executable-find
+                         "bash"))
 
-(setq-default vterm-shell
-              "/opt/homebrew/bin/fish") (setq-default explicit-shell-file-name
-              "/opt/homebrew/bin/fish")
+(setopt vterm-shell
+        "/opt/homebrew/bin/fish")
+
+(setopt explicit-shell-file-name
+        "/opt/homebrew/bin/fish")
 
 ;;;; OS
 (when (eq system-type 'darwin)
-  (setq mac-command-modifier 'control))
+  (setopt mac-command-modifier 'control))
 
 ;;;; HELPFUL DOOM STUFF
 
