@@ -1,10 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; NOTE: No need to run 'doom sync' after modifying this file!
+(load! "./local.el")
 
 ;;;; EDITOR
 
-(setopt doom-theme 'doom-gruvbox)
 (setopt display-line-numbers-type 'visual)
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 ;; TODO: Set font
@@ -52,22 +51,6 @@
 ;;;; ORG MODE
 
 (setopt org-tags-column -77)
-
-;;;; TERMINAL
-
-;; Configure fish shell for emulation and bash for execution
-(setopt shell-file-name (executable-find
-                         "bash"))
-
-(setopt vterm-shell
-        "/opt/homebrew/bin/fish")
-
-(setopt explicit-shell-file-name
-        "/opt/homebrew/bin/fish")
-
-;;;; OS
-(when (eq system-type 'darwin)
-  (setopt mac-command-modifier 'control))
 
 ;;;; HELPFUL DOOM STUFF
 
