@@ -5,7 +5,6 @@
 ;;;; EDITOR
 
 (setopt display-line-numbers-type 'visual)
-;; TODO: Set font
 
 (after! corfu
   (map! :map corfu-map
@@ -47,9 +46,16 @@
 (map! :nv "C-d" #'scroll-down-centered)
 (map! :nv "C-u" #'scroll-up-centered)
 
+(map! "M-n" #'move-dup-move-lines-down)
+(map! "C-M-n" #'move-dup-duplicate-down)
+(map! "M-p" #'move-dup-move-lines-up)
+(map! "C-M-p" #'move-dup-duplicate-up)
+
 ;;;; ORG MODE
 
-(setopt org-tags-column -77)
+(after! org
+  (setopt org-tags-column -77)
+  )
 
 ;;;; HELPFUL DOOM STUFF
 
