@@ -1,11 +1,10 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(load! "./local.el")
+(load! "local.el")
 
 ;;;; EDITOR
 
 (setopt display-line-numbers-type 'visual)
-(set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 ;; TODO: Set font
 
 (after! corfu
