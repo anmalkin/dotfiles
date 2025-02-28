@@ -2,7 +2,20 @@
 
 (load! "local.el")
 
-;;;; EDITOR
+;;;; Remove unused keybindings
+(map! :leader
+      "o i" nil
+      "o I" nil
+      "o u" nil
+      "o U" nil
+      "o l" nil
+      "o L" nil
+      "h K" #'describe-keymap
+      )
+
+;;;; Editor
+
+(setopt confirm-kill-emacs nil)
 
 (setopt display-line-numbers-type 'visual)
 
@@ -46,10 +59,10 @@
 (map! :nv "C-d" #'scroll-down-centered)
 (map! :nv "C-u" #'scroll-up-centered)
 
-(map! "M-n" #'move-dup-move-lines-down)
-(map! "C-M-n" #'move-dup-duplicate-down)
-(map! "M-p" #'move-dup-move-lines-up)
-(map! "C-M-p" #'move-dup-duplicate-up)
+(map! :nv "M-k" #'move-dup-move-lines-up)
+(map! :nv "M-j" #'move-dup-move-lines-down)
+(map! :nv "C-M-k" #'move-dup-duplicate-up)
+(map! :nv "C-M-j" #'move-dup-duplicate-down)
 
 ;;;; ORG MODE
 

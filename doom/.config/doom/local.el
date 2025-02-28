@@ -2,7 +2,6 @@
 
 (setopt doom-theme 'doom-gruvbox)
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
-;; TODO set font
 
 ;; TODO: Customize capture templates
 (after! org
