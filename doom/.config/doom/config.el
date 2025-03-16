@@ -2,6 +2,9 @@
 
 (load! "local.el")
 
+(setopt confirm-kill-emacs nil)
+(setopt which-key-idle-delay 0.5)
+
 ;;;; Remove unused keybindings
 (map! :leader
       "o i" nil
@@ -15,9 +18,7 @@
 
 ;;;; Editor
 
-(setopt confirm-kill-emacs nil)
-
-(setopt display-line-numbers-type 'visual)
+(setopt display-line-numbers-type 'relative)
 
 (after! corfu
   (map! :map corfu-map
