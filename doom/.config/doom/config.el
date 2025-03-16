@@ -16,6 +16,11 @@
       "h K" #'describe-keymap
       )
 
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override
+        `(+workspace-current-name))
+  )
+
 ;;;; Editor
 
 (setopt display-line-numbers-type 'relative)
