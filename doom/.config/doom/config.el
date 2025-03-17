@@ -23,7 +23,7 @@
 
 ;;;; Editor
 
-(setopt display-line-numbers-type 'relative)
+(setopt display-line-numbers-type 'visual)
 
 (after! corfu
   (map! :map corfu-map
