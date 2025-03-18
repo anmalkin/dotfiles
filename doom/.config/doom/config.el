@@ -3,7 +3,16 @@
 (load! "local.el")
 
 (setopt confirm-kill-emacs nil)
+
+;;;; Whick-key
 (setopt which-key-idle-delay 0.5)
+(setopt which-key-allow-multiple-replacements t)
+(after! which-key
+  (pushnew!
+   which-key-replacement-alist
+   '(("" . "\\`+?evil[-:]?\\(?:a-\\)?\\(.*\\)") . (nil . "◂\\1"))
+   '(("\\`g s" . "\\`evilem--?motion-\\(.*\\)") . (nil . "◃\\1"))
+   ))
 
 ;;;; Remove unused keybindings
 (map! :leader
@@ -27,8 +36,6 @@
 
 (after! corfu
   (map! :map corfu-map
-        :nvi "TAB" nil
-        :nvi "<tab>" nil
         :i "C-k" #'corfu-popupinfo-scroll-down
         :i "C-j" #'corfu-popupinfo-scroll-up))
 
