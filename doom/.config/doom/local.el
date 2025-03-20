@@ -3,6 +3,11 @@
 (setopt doom-theme 'doom-gruvbox)
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 12)
+      doom-big-font (font-spec :family "Hack Nerd Font Mono" :size 16)
+      doom-symbol-font (font-spec :family "Symbols Nerd Font Mono")
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font"))
+
 ;; TODO: Customize capture templates
 (after! org
   (setopt org-capture-templates
