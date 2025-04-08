@@ -7,7 +7,7 @@
 (map! :leader "h K" #'describe-keymap)
 (map! :leader :desc "Show hunk" "g p" #'diff-hl-show-hunk)
 (after! persp-mode
-  (setq persp-emacsclient-init-frame-behaviour-override #'+workspace-current-name))
+  (setq persp-emacsclient-init-frame-behaviour-override #'(+workspace-current-name)))
 
 ;;;; Whick-key
 (setopt which-key-idle-delay 0.5)
@@ -37,21 +37,6 @@
   (map! :map corfu-map
         :i "C-k" #'corfu-popupinfo-scroll-down
         :i "C-j" #'corfu-popupinfo-scroll-up))
-
-(defun scroll-down-centered ()
-  "Keep window centered when scrolling down"
-  (interactive)
-  (evil-scroll-down 0)
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(defun scroll-up-centered ()
-  "Keep window centered when scrolling up"
-  (interactive)
-  (evil-scroll-up 0)
-  (evil-scroll-line-to-center (line-number-at-pos)))
-
-(map! :nv "C-d" #'scroll-down-centered)
-(map! :nv "C-u" #'scroll-up-centered)
 
 (map! :nv "M-k" #'move-dup-move-lines-up)
 (map! :nv "M-j" #'move-dup-move-lines-down)
