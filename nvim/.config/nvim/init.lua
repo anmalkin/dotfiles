@@ -20,7 +20,13 @@ vim.g.maplocalleader = ' '
 
 require("config.settings")
 require("config.remap")
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  change_detection = {
+    notify = false,
+  }
+})
+
+vim.lsp.enable({ 'lua_ls', 'basedpyright', 'rust_analyzer', 'clangd' })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=4 sw=2 et

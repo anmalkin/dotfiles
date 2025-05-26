@@ -62,6 +62,9 @@
         :i "C-c ;" #'(lambda () (interactive) (end-of-line) (insert ";")))
   )
 
+(after! python
+  (setq lsp-pyright-langserver-command "basedpyright"))
+
 
 ;;;; ORG MODE
 (after! org

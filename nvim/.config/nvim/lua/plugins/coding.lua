@@ -4,7 +4,7 @@ return {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
     dependencies = 'rafamadriz/friendly-snippets',
-    build = 'cargo build --release',
+    version = '1.*',
     opts = {
       -- 'default' for mappings similar to built-in completion
       -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
@@ -21,17 +21,13 @@ return {
         ['<D-f>'] = { 'scroll_documentation_down', 'fallback' },
       },
       appearance = {
-        use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono'
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
-          -- dont show LuaLS require statements when lazydev has items
-          lsp = { fallbacks = { "lazydev" } },
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
         },
-        cmdline = {},
       },
       completion = {
         documentation = {
@@ -55,73 +51,70 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
+    lazy = false,
     build = ':TSUpdate',
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        -- Add languages to be installed here that you want installed for treesitter
-        ensure_installed = { 'bash', 'c', 'cpp', 'fish', 'go', 'javascript', 'lua', 'markdown', 'ocaml', 'python', 'rust', 'tsx', 'typescript', 'vim', 'vimdoc' },
-        sync_install = false,
-        auto_install = false,
-        ignore_install = {},
-        modules = {},
-
-        highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
+    opts = {
+      ensure_installed = { 'bash', 'c', 'cpp', 'fish', 'go', 'javascript', 'lua', 'markdown', 'ocaml', 'python', 'rust', 'tsx', 'typescript', 'vim', 'vimdoc' },
+      sync_install = false,
+      auto_install = false,
+      ignore_install = {},
+      modules = {},
+      highlight = { enable = true },
+      indent = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<c-space>',
+          node_incremental = '<c-space>',
+          scope_incremental = '<c-s>',
+          node_decremental = '<Tab>',
+        },
+      },
+      textobjects = {
+        select = {
           enable = true,
+          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
           keymaps = {
-            init_selection = '<c-space>',
-            node_incremental = '<c-space>',
-            scope_incremental = '<c-s>',
-            node_decremental = '<Tab>',
+            -- You can use the capture groups defined in textobjects.scm
+            ['aa'] = '@parameter.outer',
+            ['ia'] = '@parameter.inner',
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
           },
         },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ['aa'] = '@parameter.outer',
-              ['ia'] = '@parameter.inner',
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
-            },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set kumps in the kumplist
+          goto_next_start = {
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
           },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              [']m'] = '@function.outer',
-              [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-              [']M'] = '@function.outer',
-              [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-              ['[m'] = '@function.outer',
-              ['[['] = '@class.outer',
-            },
-            goto_previous_end = {
-              ['[M'] = '@function.outer',
-              ['[]'] = '@class.outer',
-            },
+          goto_next_end = {
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
           },
-          swap = {
-            enable = true,
-            swap_next = {
-              ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-              ['<leader>A'] = '@parameter.inner',
-            },
+          goto_previous_start = {
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
+          },
+          goto_previous_end = {
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
           },
         },
-      }
-    end,
+        swap = {
+          enable = true,
+          swap_next = {
+            ['<leader>a'] = '@parameter.inner',
+          },
+          swap_previous = {
+            ['<leader>A'] = '@parameter.inner',
+          },
+        },
+      },
+    }
   },
 
   {
@@ -133,7 +126,7 @@ return {
 
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     opts = {},
   },

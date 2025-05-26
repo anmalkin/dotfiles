@@ -39,11 +39,6 @@ vim.keymap.set({ 'n', 'i' }, "<Down>", "<nop>")
 vim.keymap.set({ 'n', 'i' }, "<Left>", "<nop>")
 vim.keymap.set({ 'n', 'i' }, "<Right>", "<nop>")
 
--- Shortcuts for executing lua commands
-vim.keymap.set('n', '<Leader>x', ':.lua<cr>', { desc = "Execute current line (lua)" })
-vim.keymap.set('v', '<Leader>x', ':lua<cr>', { desc = "Execute highlighted text (lua)" })
-
-
 -- Exit terminal
 vim.keymap.set({ 't' }, "<Esc>", "<C-Bslash><C-n>")
 

@@ -1,5 +1,4 @@
 ;;; local.el --- Local configuration -*- lexical-binding: t; -*-
-
 (setopt doom-theme 'doom-gruvbox)
 (set-frame-parameter (selected-frame) 'alpha '(95 . 95)) (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 
