@@ -105,7 +105,6 @@ vim.lsp.config('lua_ls', {
 })
 
 vim.diagnostic.config({
-  virtual_text = { current_line = true },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "󰅚 ",
@@ -117,6 +116,7 @@ vim.diagnostic.config({
   underline = false,
   update_in_insert = false,
   severity_sort = true,
+  jump = { float = true },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {

@@ -1,8 +1,3 @@
-vim.api.nvim_create_user_command("LualineTheme", function()
-  local theme = vim.fn.input("Theme: ")
-  require('lualine').setup({ options = { theme = theme } })
-end, {})
-
 return {
 
   {
